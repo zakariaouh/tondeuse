@@ -14,6 +14,19 @@ public enum Direction {
         if (this == Direction.SOUTH) {
             return Direction.EAST;
         }
-        return this;
+        return this.NORTH;
+    }
+
+    public Direction rightDirection() {
+        if (this == this.NORTH) {
+            return Direction.EAST;
+        }
+        if (this == this.EAST) {
+            return Direction.SOUTH;
+        }
+        if (this == Direction.SOUTH) {
+            return Direction.WEST;
+        }
+        return this.NORTH;
     }
 }

@@ -6,6 +6,7 @@ import java.util.Objects;
 public class Mower {
 
     public static final String GAUCHE = "G";
+    private static final String DROIT = "D";
     private final Lawn lawn;
     private Position position;
     private Direction direction;
@@ -20,6 +21,9 @@ public class Mower {
     public void mowItNow(String commande) {
         if (GAUCHE.equals(commande)) {
             this.direction = this.direction.leftDirection();
+        }
+        if(DROIT.equals(commande)){
+            this.direction = this.direction.rightDirection();
         }
     }
 
