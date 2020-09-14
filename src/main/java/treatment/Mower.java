@@ -19,13 +19,7 @@ public class Mower {
 
     public void mowItNow(String commande) {
         if (GAUCHE.equals(commande)) {
-            if (Direction.NORTH == this.direction) {
-                this.direction = Direction.WEST;
-            } else if (Direction.WEST == this.direction) {
-                this.direction = Direction.SOUTH;
-            } else if (Direction.SOUTH == this.direction) {
-                this.direction = Direction.EAST;
-            }
+            this.direction = this.direction.leftDirection();
         }
     }
 
