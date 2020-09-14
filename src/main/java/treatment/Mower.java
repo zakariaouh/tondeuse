@@ -1,6 +1,8 @@
 package treatment;
 
 
+import com.sun.deploy.util.StringUtils;
+
 import java.util.Objects;
 
 public class Mower {
@@ -17,13 +19,19 @@ public class Mower {
         this.position = position;
         this.direction = direction;
     }
-
+    boolean isBlankString(String string) {
+        return string == null || string.trim().isEmpty();
+    }
     public void mowItNow(String commande) {
         if (commande.length() == 1) {
             moveToDirection(commande.charAt(0));
         } else if (commande.length() == 2) {
             moveToDirection(commande.charAt(0));
             moveToDirection(commande.charAt(1));
+        }else if (commande.length() == 3) {
+            moveToDirection(commande.charAt(0));
+            moveToDirection(commande.charAt(1));
+            moveToDirection(commande.charAt(2));
         }
     }
 
