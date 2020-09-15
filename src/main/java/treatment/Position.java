@@ -11,6 +11,7 @@ public class Position {
         this.y = y;
     }
 
+
     public void goUp() {
         this.y = y + 1;
     }
@@ -25,6 +26,10 @@ public class Position {
 
     public void goDown() {
         this.y = y - 1;
+    }
+
+    public Position copy() {
+        return new Position(x, y);
     }
 
     @Override

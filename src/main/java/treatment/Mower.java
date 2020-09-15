@@ -40,7 +40,7 @@ public class Mower {
     }
 
     private boolean isMoveForwardPossible() {
-        Position nextPosition = getNextPositionOf(new Position(position.getX(), position.getY()));
+        Position nextPosition = getNextPositionOf(position.copy());
         return lawn.accept(nextPosition);
 
     }
@@ -77,22 +77,7 @@ public class Mower {
     }
 
     public void moveForward() {
-
-        if (Orientation.NORTH.equals(this.orientation)) {
-            position.goUp();
-
-        }
-        if (Orientation.EAST.equals(this.orientation)) {
-            position.goRight();
-
-        }
-        if (Orientation.WEST.equals(this.orientation)) {
-            position.goLift();
-
-        }
-        if (Orientation.SOUTH.equals(this.orientation)) {
-            position.goDown();
-        }
+        position = getNextPositionOf(position);
 
     }
 
