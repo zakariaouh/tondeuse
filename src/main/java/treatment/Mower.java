@@ -1,13 +1,14 @@
 package treatment;
 
 
+import java.util.List;
 import java.util.Objects;
 
 public class Mower {
 
     public static final char GAUCHE = 'G';
     private static final char DROITE = 'D';
-    private  Lawn lawn;
+    private Lawn lawn;
     private Position position;
     private Orientation orientation;
 
@@ -23,7 +24,18 @@ public class Mower {
         this.orientation = orientation;
     }
 
+    public void run(String task) {
+        List<Action> actions = ActionFactory.create(task);
+        actions.forEach(action -> {
+            if (action.isOrientation()) {
+                moveToDirection(action.getAction());
+            }
+            if (action.isMovement()) {
+                moveForward(String.valueOf(action.getAction()));
+            }
+        });
 
+    }
 
     public void changeOrientation(String orders) {
         orders
@@ -32,6 +44,7 @@ public class Mower {
                 .forEach(this::moveToDirection);
 
     }
+
     public void moveToDirection(char orientation) {
         if (GAUCHE == orientation) {
             this.orientation = this.orientation.left();
@@ -40,6 +53,7 @@ public class Mower {
             this.orientation = this.orientation.right();
         }
     }
+
     public void moveForward(String orders) {
 
         if (Orientation.NORTH.equals(this.orientation)) {
@@ -99,7 +113,7 @@ public class Mower {
 
     private int numberOfRightPossibleMovements(String orders) {
         int possibleMovements = orders.length();
-        if (possibleMovements> this.lawn.getLength()) {
+        if (possibleMovements > this.lawn.getLength()) {
             possibleMovements = this.lawn.getWidth();
         }
         return possibleMovements;
@@ -113,6 +127,7 @@ public class Mower {
         }
         return possibleMovements;
     }
+
     private int numberOfDownPossibleMovements(String orders) {
         int max = this.position.getY();
 
@@ -145,4 +160,5 @@ public class Mower {
                 ", orientation=" + orientation +
                 '}';
     }
+
 }
