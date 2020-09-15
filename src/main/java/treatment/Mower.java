@@ -29,12 +29,19 @@ public class Mower {
 
     }
 
-    public void moveForward(String command) {
+    public void moveForward(String orders) {
+
         if (Direction.NORTH.equals(this.direction)) {
-            position.goUp();
+            for (int i = 0; i < orders.length(); i++) {
+                position.goUp();
+            }
+
         }
         if (Direction.EAST.equals(this.direction)) {
-            position.goRight();
+            for (int i = 0; i < orders.length(); i++) {
+                position.goRight();
+            }
+
         }
     }
 
