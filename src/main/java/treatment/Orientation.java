@@ -1,8 +1,32 @@
 package treatment;
 
+import java.util.Arrays;
+
 public enum Orientation {
 
-    NORTH, WEST, EAST, SOUTH;
+    NORTH("N"), WEST("W"), EAST("E"), SOUTH("S");
+    String value;
+
+    Orientation(String value) {
+        this.value = value;
+    }
+
+    public static Orientation findByValue(String value) {
+        for(Orientation o : values()){
+            if( o.value.equals(value)){
+                return o;
+            }
+        }
+        return null;
+    }
+
+/*   String getValue() {
+        return value;
+    }
+
+    public static Orientation of(String name) {
+        Orientation orientation = valueOf(name);
+    }*/
 
     Orientation left() {
         if (this == NORTH) {
