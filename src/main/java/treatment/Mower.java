@@ -7,9 +7,14 @@ public class Mower {
 
     public static final char GAUCHE = 'G';
     private static final char DROITE = 'D';
-    private final Lawn lawn;
+    private  Lawn lawn;
     private Position position;
     private Orientation orientation;
+
+    public Mower(Position position, Orientation orientation) {
+        this.position = position;
+        this.orientation = orientation;
+    }
 
     public Mower(Lawn lawn, Position position, Orientation orientation) {
 
@@ -17,6 +22,7 @@ public class Mower {
         this.position = position;
         this.orientation = orientation;
     }
+
 
 
     public void changeOrientation(String orders) {
@@ -117,20 +123,18 @@ public class Mower {
     }
 
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Mower mower = (Mower) o;
-        return lawn.equals(mower.lawn) &&
-                position.equals(mower.position) &&
+        return position.equals(mower.position) &&
                 orientation == mower.orientation;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lawn, position, orientation);
+        return Objects.hash(position, orientation);
     }
 
     @Override
