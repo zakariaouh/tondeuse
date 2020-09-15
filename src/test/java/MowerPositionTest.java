@@ -13,7 +13,7 @@ public class MowerPositionTest {
     public void moveOnceToNorthShouldIncrementYByOne() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.NORTH);
-        m.moveForward("A");
+        m.moveForward();
         Mower expected = new Mower(lawn, new Position(0, 1), Orientation.NORTH);
         Assert.assertEquals(expected, m);
     }
@@ -22,7 +22,7 @@ public class MowerPositionTest {
     public void moveOnceToEastShouldIncrementXByOne() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.EAST);
-        m.moveForward("A");
+        m.moveForward();
         Mower expected = new Mower(lawn, new Position(1, 0), Orientation.EAST);
         Assert.assertEquals(expected, m);
     }
@@ -31,7 +31,7 @@ public class MowerPositionTest {
     public void moveTwiceToNorthShouldIncrementYByTow() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.NORTH);
-        m.moveForward("AA");
+        m.run("AA");
         Mower expected = new Mower(lawn, new Position(0, 2), Orientation.NORTH);
         Assert.assertEquals(expected, m);
     }
@@ -40,7 +40,7 @@ public class MowerPositionTest {
     public void moveTwiceToEastShouldIncrementXByTow() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.EAST);
-        m.moveForward("AA");
+        m.run("AA");
         Mower expected = new Mower(lawn, new Position(2, 0), Orientation.EAST);
         Assert.assertEquals(expected, m);
     }
@@ -51,7 +51,7 @@ public class MowerPositionTest {
     public void theNextPositionInTheNorthIsOutsideTheLawnTheMowerShouldNotMove() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.NORTH);
-        m.moveForward("AAAAAA");
+        m.run("AAAAAA");
         Mower expected = new Mower(lawn, new Position(0, 5), Orientation.NORTH);
         Assert.assertEquals(expected, m);
     }
@@ -60,7 +60,7 @@ public class MowerPositionTest {
     public void theNextPositionInTheEastIsOutsideTheLawnTheMowerShouldNotMove() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.EAST);
-        m.moveForward("AAAAAA");
+        m.run("AAAAAA");
         Mower expected = new Mower(lawn, new Position(5, 0), Orientation.EAST);
         Assert.assertEquals(expected, m);
     }
@@ -69,7 +69,7 @@ public class MowerPositionTest {
     public void moveOnceToWestShouldDecrementXByOne() {
 
         Mower m = new Mower(lawn, new Position(1, 1), Orientation.WEST);
-        m.moveForward("A");
+        m.moveForward();
         Mower expected = new Mower(lawn, new Position(0, 1), Orientation.WEST);
         Assert.assertEquals(expected, m);
     }
@@ -78,7 +78,7 @@ public class MowerPositionTest {
     public void moveTwiceToWestShouldDecrementXByTow() {
 
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.WEST);
-        m.moveForward("AA");
+        m.run("AA");
         Mower expected = new Mower(lawn, new Position(0, 2), Orientation.WEST);
         Assert.assertEquals(expected, m);
     }
@@ -87,7 +87,7 @@ public class MowerPositionTest {
     public void theNextPositionInTheWestIsOutsideTheLawnTheMowerShouldNotMove() {
 
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.WEST);
-        m.moveForward("AAAAAA");
+        m.run("AAAAAA");
         Mower expected = new Mower(lawn, new Position(0, 2), Orientation.WEST);
         Assert.assertEquals(expected, m);
     }
@@ -96,7 +96,7 @@ public class MowerPositionTest {
     public void moveOnceToSouthShouldDecrementXByOne() {
 
         Mower m = new Mower(lawn, new Position(1, 1), Orientation.SOUTH);
-        m.moveForward("A");
+        m.moveForward();
         Mower expected = new Mower(lawn, new Position(1, 0), Orientation.SOUTH);
         Assert.assertEquals(expected, m);
     }
@@ -105,7 +105,7 @@ public class MowerPositionTest {
     public void moveTwiceToSouthShouldDecrementXByTow() {
 
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.SOUTH);
-        m.moveForward("AA");
+        m.run("AA");
         Mower expected = new Mower(lawn, new Position(2, 0), Orientation.SOUTH);
         Assert.assertEquals(expected, m);
     }
@@ -115,7 +115,7 @@ public class MowerPositionTest {
     public void theNextPositionInTheSouthIsOutsideTheLawnTheMowerShouldNotMove() {
 
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.SOUTH);
-        m.moveForward("AAAAAA");
+        m.run("AAAAAA");
         Mower expected = new Mower(lawn, new Position(2, 0), Orientation.SOUTH);
         Assert.assertEquals(expected, m);
     }

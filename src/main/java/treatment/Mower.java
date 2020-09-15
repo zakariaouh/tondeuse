@@ -28,24 +28,25 @@ public class Mower {
         List<Action> actions = ActionFactory.create(task);
         actions.forEach(action -> {
             if (action.isOrientation()) {
-                moveToDirection(action.getAction());
+                changeOrientation(action.getAction());
             }
             if (action.isMovement()) {
-                moveForward(String.valueOf(action.getAction()));
+                if (isMoveForwardPossible()) {
+                    moveForward();
+                }
             }
         });
 
     }
 
-    public void changeOrientation(String orders) {
-        orders
-                .chars()
-                .mapToObj(singleOrder -> (char) singleOrder)
-                .forEach(this::moveToDirection);
+    private boolean isMoveForwardPossible() {
+        Position nextPosition = getNextPositionOf(new Position(position.getX(), position.getY()));
+        return lawn.accept(nextPosition);
 
     }
 
-    public void moveToDirection(char orientation) {
+
+    public void changeOrientation(char orientation) {
         if (GAUCHE == orientation) {
             this.orientation = this.orientation.left();
         }
@@ -54,89 +55,46 @@ public class Mower {
         }
     }
 
-    public void moveForward(String orders) {
+    public Position getNextPositionOf(Position p) {
 
         if (Orientation.NORTH.equals(this.orientation)) {
-            goNorth(orders);
+            p.goUp();
 
         }
         if (Orientation.EAST.equals(this.orientation)) {
-            goEast(orders);
+            p.goRight();
 
         }
         if (Orientation.WEST.equals(this.orientation)) {
-            goWest(orders);
+            p.goLift();
 
         }
         if (Orientation.SOUTH.equals(this.orientation)) {
-            goSouth(orders);
+            p.goDown();
         }
+        return p;
 
     }
 
-    private void goSouth(String orders) {
-        int numberOfLeftPossibleMovements = numberOfDownPossibleMovements(orders);
-        for (int i = 0; i < numberOfLeftPossibleMovements; i++) {
+    public void moveForward() {
+
+        if (Orientation.NORTH.equals(this.orientation)) {
+            position.goUp();
+
+        }
+        if (Orientation.EAST.equals(this.orientation)) {
+            position.goRight();
+
+        }
+        if (Orientation.WEST.equals(this.orientation)) {
+            position.goLift();
+
+        }
+        if (Orientation.SOUTH.equals(this.orientation)) {
             position.goDown();
         }
+
     }
-
-    private void goWest(String orders) {
-        int numberOfLeftPossibleMovements = numberOfLeftPossibleMovements(orders);
-        for (int i = 0; i < numberOfLeftPossibleMovements; i++) {
-            position.goLift();
-        }
-    }
-
-    private void goEast(String orders) {
-        int numberOfRightPossibleMovements = numberOfRightPossibleMovements(orders);
-        for (int i = 0; i < numberOfRightPossibleMovements; i++) {
-            position.goRight();
-        }
-    }
-
-    private void goNorth(String orders) {
-        int numberOfUpPossibleMovements = numberOfUpPossibleMovements(orders);
-        for (int i = 0; i < numberOfUpPossibleMovements; i++) {
-            position.goUp();
-        }
-    }
-
-
-    private int numberOfUpPossibleMovements(String orders) {
-        int possibleMovements = orders.length();
-        if (possibleMovements > this.lawn.getLength()) {
-            possibleMovements = this.lawn.getLength();
-        }
-        return possibleMovements;
-    }
-
-    private int numberOfRightPossibleMovements(String orders) {
-        int possibleMovements = orders.length();
-        if (possibleMovements > this.lawn.getLength()) {
-            possibleMovements = this.lawn.getWidth();
-        }
-        return possibleMovements;
-    }
-
-    private int numberOfLeftPossibleMovements(String orders) {
-        int possibleMovements = this.position.getX();
-
-        if (orders.length() < possibleMovements) {
-            possibleMovements = orders.length();
-        }
-        return possibleMovements;
-    }
-
-    private int numberOfDownPossibleMovements(String orders) {
-        int max = this.position.getY();
-
-        if (orders.length() < this.position.getY()) {
-            max = orders.length();
-        }
-        return max;
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -155,8 +113,8 @@ public class Mower {
     @Override
     public String toString() {
         return "Mower{" +
-                "lawn=" + lawn +
-                ", position=" + position +
+
+                "position=" + position +
                 ", orientation=" + orientation +
                 '}';
     }

@@ -11,6 +11,11 @@ public class Lawn {
         this.length = length;
     }
 
+    public boolean accept(Position p) {
+        return p.getX() <= this.width && p.getX() >= 0
+                && p.getY() <= this.length && p.getY() >= 0;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
