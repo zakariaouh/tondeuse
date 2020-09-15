@@ -30,20 +30,30 @@ public class Mower {
     public void moveForward(String orders) {
 
         if (Direction.NORTH.equals(this.direction)) {
-            for (int i = 0; i < upPossibleMovements(orders); i++) {
+            int numberOfUpPossibleMovements = numberOfUpPossibleMovements(orders);
+            for (int i = 0; i < numberOfUpPossibleMovements; i++) {
                 position.goUp();
             }
 
         }
         if (Direction.EAST.equals(this.direction)) {
-            for (int i = 0; i < rightPossibleMovements(orders); i++) {
+            int numberOfRightPossibleMovements = numberOfRightPossibleMovements(orders);
+            for (int i = 0; i < numberOfRightPossibleMovements; i++) {
                 position.goRight();
+            }
+
+        }
+        if (Direction.WEST.equals(this.direction)) {
+            int numberOfLeftPossibleMovements = numberOfLeftPossibleMovements(orders);
+            for (int i = 0; i < numberOfLeftPossibleMovements; i++) {
+                position.goLift();
             }
 
         }
     }
 
-    private int upPossibleMovements(String orders) {
+
+    private int numberOfUpPossibleMovements(String orders) {
         int max = orders.length();
         if (orders.length() > this.lawn.getLength()) {
             max = this.lawn.getLength();
@@ -51,10 +61,19 @@ public class Mower {
         return max;
     }
 
-    private int rightPossibleMovements(String orders) {
+    private int numberOfRightPossibleMovements(String orders) {
         int max = orders.length();
         if (orders.length() > this.lawn.getLength()) {
             max = this.lawn.getWidth();
+        }
+        return max;
+    }
+
+    private int numberOfLeftPossibleMovements(String orders) {
+        int max = this.position.getX();
+
+        if (orders.length() < this.position.getX()) {
+            max = orders.length();
         }
         return max;
     }

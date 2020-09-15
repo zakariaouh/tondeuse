@@ -11,6 +11,18 @@ public class Position {
         this.y = y;
     }
 
+    public void goUp() {
+        this.y = y + 1;
+    }
+
+    public void goRight() {
+        this.x = x + 1;
+    }
+
+    public void goLift() {
+        this.x = x - 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -21,6 +33,11 @@ public class Position {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
+
+    @Override
     public String toString() {
         return "Position{" +
                 "x=" + x +
@@ -28,16 +45,11 @@ public class Position {
                 '}';
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(x, y);
+    public int getX() {
+        return this.x;
     }
 
-    public void goUp() {
-        this.y = y + 1;
-    }
-
-    public void goRight() {
-        this.x = x + 1;
+    public int getY() {
+        return y;
     }
 }

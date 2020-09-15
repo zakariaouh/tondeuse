@@ -60,4 +60,30 @@ public class changePosition {
         Mower expected = new Mower(lawn, new Position(5, 0), Direction.EAST);
         Assert.assertEquals(expected, m);
     }
+
+    @Test
+    public void moveOnceToWestShouldDecrementXByOne() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(1, 1), Direction.WEST);
+        m.moveForward("A");
+        Mower expected = new Mower(lawn, new Position(0, 1), Direction.WEST);
+        Assert.assertEquals(expected, m);
+    }
+    @Test
+    public void moveTwiceToWestShouldDecrementXByTow() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(2, 2), Direction.WEST);
+        m.moveForward("AA");
+        Mower expected = new Mower(lawn, new Position(0, 2), Direction.WEST);
+        Assert.assertEquals(expected, m);
+    }
+    @Test
+    public void theNextPositionInTheWestIsOutsideTheLawnTheMowerShouldNotMove() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(2, 2), Direction.WEST);
+        m.moveForward("AAAAAA");
+        Mower expected = new Mower(lawn, new Position(0, 2), Direction.WEST);
+        Assert.assertEquals(expected, m);
+    }
+
 }
