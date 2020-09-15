@@ -23,6 +23,10 @@ public class Position {
         this.x = x - 1;
     }
 
+    public void goDown() {
+        this.y = y - 1;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

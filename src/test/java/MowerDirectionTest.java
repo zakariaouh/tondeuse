@@ -5,7 +5,7 @@ import treatment.Lawn;
 import treatment.Mower;
 import treatment.Position;
 
-public class MowerTest {
+public class MowerDirectionTest {
     Lawn lawn = new Lawn(5, 5);
     Position initialPosition = new Position(0, 0);
     @Test

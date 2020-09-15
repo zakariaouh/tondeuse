@@ -50,7 +50,15 @@ public class Mower {
             }
 
         }
+        if (Direction.SOUTH.equals(this.direction)) {
+            int numberOfLeftPossibleMovements = numberOfDownPossibleMovements(orders);
+            for (int i = 0; i < numberOfLeftPossibleMovements; i++) {
+                position.goDown();
+            }
+
+        }
     }
+
 
 
     private int numberOfUpPossibleMovements(String orders) {
@@ -73,6 +81,14 @@ public class Mower {
         int max = this.position.getX();
 
         if (orders.length() < this.position.getX()) {
+            max = orders.length();
+        }
+        return max;
+    }
+    private int numberOfDownPossibleMovements(String orders) {
+        int max = this.position.getY();
+
+        if (orders.length() < this.position.getY()) {
             max = orders.length();
         }
         return max;

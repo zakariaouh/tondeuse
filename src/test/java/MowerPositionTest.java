@@ -5,7 +5,7 @@ import treatment.Lawn;
 import treatment.Mower;
 import treatment.Position;
 
-public class changePosition {
+public class MowerPositionTest {
 
     @Test
     public void moveOnceToNorthShouldIncrementYByOne() {
@@ -86,4 +86,30 @@ public class changePosition {
         Assert.assertEquals(expected, m);
     }
 
+    @Test
+    public void moveOnceToSouthShouldDecrementXByOne() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(1, 1), Direction.SOUTH);
+        m.moveForward("A");
+        Mower expected = new Mower(lawn, new Position(1, 0), Direction.SOUTH);
+        Assert.assertEquals(expected, m);
+    }
+    @Test
+    public void moveTwiceToSouthShouldDecrementXByTow() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(2, 2), Direction.SOUTH);
+        m.moveForward("AA");
+        Mower expected = new Mower(lawn, new Position(2, 0), Direction.SOUTH);
+        Assert.assertEquals(expected, m);
+    }
+
+
+    @Test
+    public void theNextPositionInTheSouthIsOutsideTheLawnTheMowerShouldNotMove() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(2, 2), Direction.SOUTH);
+        m.moveForward("AAAAAA");
+        Mower expected = new Mower(lawn, new Position(2, 0), Direction.SOUTH);
+        Assert.assertEquals(expected, m);
+    }
 }
