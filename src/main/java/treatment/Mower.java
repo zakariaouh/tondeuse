@@ -19,21 +19,25 @@ public class Mower {
         this.position = position;
         this.direction = direction;
     }
-    boolean isBlankString(String string) {
-        return string == null || string.trim().isEmpty();
+
+
+    public void changeDirection(String orders) {
+        orders
+                .chars()
+                .mapToObj(singleOrder -> (char) singleOrder)
+                .forEach(this::moveToDirection);
+
     }
-    public void mowItNow(String commande) {
-        if (commande.length() == 1) {
-            moveToDirection(commande.charAt(0));
-        } else if (commande.length() == 2) {
-            moveToDirection(commande.charAt(0));
-            moveToDirection(commande.charAt(1));
-        }else if (commande.length() == 3) {
-            moveToDirection(commande.charAt(0));
-            moveToDirection(commande.charAt(1));
-            moveToDirection(commande.charAt(2));
+
+    public void moveForward(String command) {
+        if (Direction.NORTH.equals(this.direction)) {
+            position.goUp();
+        }
+        if (Direction.EAST.equals(this.direction)) {
+            position.goRight();
         }
     }
+
 
     public void moveToDirection(char direction) {
         if (GAUCHE == direction) {
