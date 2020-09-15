@@ -4,7 +4,7 @@ public enum Direction {
 
     NORTH, WEST, EAST, SOUTH;
 
-    Direction leftDirection() {
+    Direction left() {
         if (this == this.NORTH) {
             return Direction.WEST;
         }
@@ -17,7 +17,7 @@ public enum Direction {
         return this.NORTH;
     }
 
-    public Direction rightDirection() {
+    public Direction right() {
         if (this == this.NORTH) {
             return Direction.EAST;
         }
@@ -29,4 +29,6 @@ public enum Direction {
         }
         return this.NORTH;
     }
+
+
 }
