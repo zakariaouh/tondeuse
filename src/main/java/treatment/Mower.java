@@ -9,46 +9,46 @@ public class Mower {
     private static final char DROITE = 'D';
     private final Lawn lawn;
     private Position position;
-    private Direction direction;
+    private Orientation orientation;
 
-    public Mower(Lawn lawn, Position position, Direction direction) {
+    public Mower(Lawn lawn, Position position, Orientation orientation) {
 
         this.lawn = lawn;
         this.position = position;
-        this.direction = direction;
+        this.orientation = orientation;
     }
 
 
-    public void changeDirection(String orders) {
+    public void changeOrientation(String orders) {
         orders
                 .chars()
                 .mapToObj(singleOrder -> (char) singleOrder)
                 .forEach(this::moveToDirection);
 
     }
-    public void moveToDirection(char direction) {
-        if (GAUCHE == direction) {
-            this.direction = this.direction.left();
+    public void moveToDirection(char orientation) {
+        if (GAUCHE == orientation) {
+            this.orientation = this.orientation.left();
         }
-        if (DROITE == direction) {
-            this.direction = this.direction.right();
+        if (DROITE == orientation) {
+            this.orientation = this.orientation.right();
         }
     }
     public void moveForward(String orders) {
 
-        if (Direction.NORTH.equals(this.direction)) {
+        if (Orientation.NORTH.equals(this.orientation)) {
             goNorth(orders);
 
         }
-        if (Direction.EAST.equals(this.direction)) {
+        if (Orientation.EAST.equals(this.orientation)) {
             goEast(orders);
 
         }
-        if (Direction.WEST.equals(this.direction)) {
+        if (Orientation.WEST.equals(this.orientation)) {
             goWest(orders);
 
         }
-        if (Direction.SOUTH.equals(this.direction)) {
+        if (Orientation.SOUTH.equals(this.orientation)) {
             goSouth(orders);
         }
 
@@ -125,12 +125,12 @@ public class Mower {
         Mower mower = (Mower) o;
         return lawn.equals(mower.lawn) &&
                 position.equals(mower.position) &&
-                direction == mower.direction;
+                orientation == mower.orientation;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lawn, position, direction);
+        return Objects.hash(lawn, position, orientation);
     }
 
     @Override
@@ -138,7 +138,7 @@ public class Mower {
         return "Mower{" +
                 "lawn=" + lawn +
                 ", position=" + position +
-                ", direction=" + direction +
+                ", orientation=" + orientation +
                 '}';
     }
 }
