@@ -41,4 +41,23 @@ public class changePosition {
         Mower expected = new Mower(lawn, new Position(2, 0), Direction.EAST);
         Assert.assertEquals(expected, m);
     }
+
+    //Si la position après mouvement est en dehors de la pelouse, la tondeuse ne bouge pas,
+    //conserve son orientation et traite la commande suivante.
+    @Test
+    public void theNextPositionInTheNorthIsOutsideTheLawnTheMowerShouldNotMove() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(0, 0), Direction.NORTH);
+        m.moveForward("AAAAAA");
+        Mower expected = new Mower(lawn, new Position(0, 5), Direction.NORTH);
+        Assert.assertEquals(expected, m);
+    }
+    @Test
+    public void theNextPositionInTheEastIsOutsideTheLawnTheMowerShouldNotMove() {
+        Lawn lawn = new Lawn(5, 5);
+        Mower m = new Mower(lawn, new Position(0, 0), Direction.EAST);
+        m.moveForward("AAAAAA");
+        Mower expected = new Mower(lawn, new Position(5, 0), Direction.EAST);
+        Assert.assertEquals(expected, m);
+    }
 }

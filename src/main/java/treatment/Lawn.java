@@ -3,11 +3,11 @@ package treatment;
 import java.util.Objects;
 
 public class Lawn {
-    private int with;
+    private int width;
     private int length;
 
-    public Lawn(int with , int length) {
-        this.with = with;
+    public Lawn(int width, int length) {
+        this.width = width;
         this.length = length;
     }
 
@@ -16,20 +16,28 @@ public class Lawn {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lawn lawn = (Lawn) o;
-        return with == lawn.with &&
+        return width == lawn.width &&
                 length == lawn.length;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(with, length);
+        return Objects.hash(width, length);
     }
 
     @Override
     public String toString() {
         return "Lawn{" +
-                "with=" + with +
+                "width=" + width +
                 ", length=" + length +
                 '}';
+    }
+
+    public int getLength() {
+        return this.length;
+    }
+
+    public int getWidth() {
+        return this.width;
     }
 }

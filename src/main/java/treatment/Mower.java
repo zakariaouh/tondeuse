@@ -1,8 +1,6 @@
 package treatment;
 
 
-import com.sun.deploy.util.StringUtils;
-
 import java.util.Objects;
 
 public class Mower {
@@ -32,19 +30,34 @@ public class Mower {
     public void moveForward(String orders) {
 
         if (Direction.NORTH.equals(this.direction)) {
-            for (int i = 0; i < orders.length(); i++) {
+            for (int i = 0; i < upPossibleMovements(orders); i++) {
                 position.goUp();
             }
 
         }
         if (Direction.EAST.equals(this.direction)) {
-            for (int i = 0; i < orders.length(); i++) {
+            for (int i = 0; i < rightPossibleMovements(orders); i++) {
                 position.goRight();
             }
 
         }
     }
 
+    private int upPossibleMovements(String orders) {
+        int max = orders.length();
+        if (orders.length() > this.lawn.getLength()) {
+            max = this.lawn.getLength();
+        }
+        return max;
+    }
+
+    private int rightPossibleMovements(String orders) {
+        int max = orders.length();
+        if (orders.length() > this.lawn.getLength()) {
+            max = this.lawn.getWidth();
+        }
+        return max;
+    }
 
     public void moveToDirection(char direction) {
         if (GAUCHE == direction) {
