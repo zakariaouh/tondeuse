@@ -21,26 +21,26 @@ public enum Orientation {
 
     Orientation left() {
         if (this == NORTH) {
-            return Orientation.WEST;
+            return WEST;
         }
         if (this == WEST) {
-            return Orientation.SOUTH;
+            return SOUTH;
         }
-        if (this == Orientation.SOUTH) {
-            return Orientation.EAST;
+        if (this == SOUTH) {
+            return EAST;
         }
         return NORTH;
     }
 
     public Orientation right() {
         if (this == NORTH) {
-            return Orientation.EAST;
+            return EAST;
         }
         if (this == EAST) {
-            return Orientation.SOUTH;
+            return SOUTH;
         }
-        if (this == Orientation.SOUTH) {
-            return Orientation.WEST;
+        if (this == SOUTH) {
+            return WEST;
         }
         return NORTH;
     }

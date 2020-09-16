@@ -1,3 +1,5 @@
+package treatment;
+
 import org.junit.Assert;
 import org.junit.Test;
 import treatment.Lawn;
@@ -18,7 +20,7 @@ public class MowerMultipleMovesAndOrientationsTest {
     }
 
     @Test
-    public void moveLiftAndMoveForwardShouldDecrementXAndChangeOrientation() {
+    public void moveLeftAndMoveForwardShouldDecrementXAndChangeOrientation() {
         Lawn lawn = new Lawn(5, 5);
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.NORTH);
         m.run("GA");
@@ -44,8 +46,6 @@ public class MowerMultipleMovesAndOrientationsTest {
         Mower expected = new Mower(lawn, new Position(3, 3), Orientation.NORTH);
         Assert.assertEquals(expected, m);
     }
-
-
 
 
 

@@ -20,7 +20,7 @@ public class Position {
         this.x = x + 1;
     }
 
-    public void goLift() {
+    public void goLeft() {
         this.x = x - 1;
     }
 

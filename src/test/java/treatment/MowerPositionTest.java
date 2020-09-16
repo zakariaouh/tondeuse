@@ -1,3 +1,5 @@
+package treatment;
+
 import org.junit.Assert;
 import org.junit.Test;
 import treatment.Orientation;
@@ -28,7 +30,7 @@ public class MowerPositionTest {
     }
 
     @Test
-    public void moveTwiceToNorthShouldIncrementYByTow() {
+    public void moveTwiceToNorthShouldIncrementYByTwo() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.NORTH);
         m.run("AA");
@@ -37,7 +39,7 @@ public class MowerPositionTest {
     }
 
     @Test
-    public void moveTwiceToEastShouldIncrementXByTow() {
+    public void moveTwiceToEastShouldIncrementXByTwo() {
 
         Mower m = new Mower(lawn, new Position(0, 0), Orientation.EAST);
         m.run("AA");
@@ -75,7 +77,7 @@ public class MowerPositionTest {
     }
 
     @Test
-    public void moveTwiceToWestShouldDecrementXByTow() {
+    public void moveTwiceToWestShouldDecrementXByTwo() {
 
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.WEST);
         m.run("AA");
@@ -102,7 +104,7 @@ public class MowerPositionTest {
     }
 
     @Test
-    public void moveTwiceToSouthShouldDecrementXByTow() {
+    public void moveTwiceToSouthShouldDecrementXByTwo() {
 
         Mower m = new Mower(lawn, new Position(2, 2), Orientation.SOUTH);
         m.run("AA");

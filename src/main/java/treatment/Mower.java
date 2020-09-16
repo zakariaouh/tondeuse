@@ -1,6 +1,8 @@
 package treatment;
 
 
+import tools.parser.ActionParser;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -25,7 +27,7 @@ public class Mower {
     }
 
     public void run(String task) {
-        List<Action> actions = ActionFactory.create(task);
+        List<Action> actions = ActionParser.parse(task);
         actions.forEach(action -> {
             if (action.isOrientation()) {
                 changeOrientation(action.getName());
@@ -54,7 +56,7 @@ public class Mower {
         }
     }
 
-    public Position getNextPositionOf(Position p) {
+    private Position getNextPositionOf(Position p) {
 
         if (Orientation.NORTH.equals(this.orientation)) {
             p.goUp();
@@ -65,7 +67,7 @@ public class Mower {
 
         }
         if (Orientation.WEST.equals(this.orientation)) {
-            p.goLift();
+            p.goLeft();
 
         }
         if (Orientation.SOUTH.equals(this.orientation)) {

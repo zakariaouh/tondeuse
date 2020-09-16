@@ -1,4 +1,4 @@
-package treatment;
+package tools;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,13 +6,16 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FileUtils {
+
+    public static final String PATH_OF_TEST_FILE = "/data.txt";
+
     private FileUtils(){
 
     }
     public static String loadTestFile() throws IOException {
 
         Class clazz = FileUtils.class;
-        InputStream inputStream = clazz.getResourceAsStream("/data.txt");
+        InputStream inputStream = clazz.getResourceAsStream(PATH_OF_TEST_FILE);
         return readFromInputStream(inputStream);
 
     }

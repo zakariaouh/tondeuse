@@ -1,3 +1,5 @@
+package treatment;
+
 import org.junit.Assert;
 import org.junit.Test;
 import treatment.*;

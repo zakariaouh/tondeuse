@@ -53,10 +53,10 @@ On attend le résultat suivant (position finale des tondeuses) :
 
 # Non realisé
 
-conflit entre tandeuses, une est l'obstacle de l'autre la tondeuse s'arrête
+- Conflit entre tandeuses, une est l'obstacle de l'autre la tondeuse s'arrête
 exemple:<br/>
 5 5<br/>
-1 0 N<br/>
+1 0 E<br/>
 AA<br/>
 2 0 E<br/>
 AA<br/>
@@ -64,3 +64,4 @@ le résultat suivant (position finale des tondeuses) <br/>
 3 0 N<br/>
 2 0 E<br/>
 
+- Plus de deux tondeuses en passent par un fichier

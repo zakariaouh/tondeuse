@@ -1,3 +1,5 @@
+package treatment;
+
 import org.junit.Assert;
 import org.junit.Test;
 import treatment.Mower;
@@ -10,7 +12,7 @@ public class MowerOrientationTest {
 
 
     @Test
-    public void theLiftOfNorthShouldBeWest() {
+    public void theLeftOfNorthShouldBeWest() {
         Mower m = new Mower(initialPosition, Orientation.NORTH);
         m.changeOrientation('G');
         Mower expected = new Mower(initialPosition, Orientation.WEST);
@@ -18,7 +20,7 @@ public class MowerOrientationTest {
     }
 
     @Test
-    public void theLiftOfWestShouldBeSouth() {
+    public void theLeftOfWestShouldBeSouth() {
         Mower m = new Mower(initialPosition, Orientation.WEST);
         m.changeOrientation('G');
         Mower expected = new Mower(initialPosition, Orientation.SOUTH);
@@ -27,7 +29,7 @@ public class MowerOrientationTest {
 
 
     @Test
-    public void theLiftOfSouthShouldBeEast() {
+    public void theLeftOfSouthShouldBeEast() {
         Mower m = new Mower(initialPosition, Orientation.SOUTH);
         m.changeOrientation('G');
         Mower expected = new Mower(initialPosition, Orientation.EAST);
@@ -35,7 +37,7 @@ public class MowerOrientationTest {
     }
 
     @Test
-    public void theLiftOfEastShouldBeNorth() {
+    public void theLeftOfEastShouldBeNorth() {
         Mower m = new Mower(initialPosition, Orientation.EAST);
         m.changeOrientation('G');
         Mower expected = new Mower(initialPosition, Orientation.NORTH);
@@ -79,7 +81,7 @@ public class MowerOrientationTest {
 
 
     @Test
-    public void towTimesRightOfNorthShouldBeSouth() {
+    public void twoTimesRightOfNorthShouldBeSouth() {
         Mower m = new Mower(initialPosition, Orientation.NORTH);
         m.run("DD");
         Mower expected = new Mower(initialPosition, Orientation.SOUTH);
@@ -89,7 +91,7 @@ public class MowerOrientationTest {
     }
 
     @Test
-    public void threeTimesLiftOfNorthShouldBeEast() {
+    public void threeTimesLeftOfNorthShouldBeEast() {
         Mower m = new Mower(initialPosition, Orientation.NORTH);
         m.run("GGG");
         Mower expected = new Mower(initialPosition, Orientation.EAST);
@@ -97,7 +99,7 @@ public class MowerOrientationTest {
     }
 
     @Test
-    public void fourTimesLiftOfNorthShouldBeNorth() {
+    public void fourTimesLeftOfNorthShouldBeNorth() {
         Mower m = new Mower(initialPosition, Orientation.NORTH);
         m.run("GGGG");
         Mower expected = new Mower(initialPosition, Orientation.NORTH);
