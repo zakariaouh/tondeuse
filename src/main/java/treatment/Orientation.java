@@ -12,21 +12,12 @@ public enum Orientation {
     }
 
     public static Orientation findByValue(String value) {
-        for(Orientation o : values()){
-            if( o.value.equals(value)){
-                return o;
-            }
-        }
-        return null;
-    }
+        return Arrays.stream(values())
+                .filter(x -> x.value .equals(value))
+                .findFirst()
+                .orElse(null);
 
-/*   String getValue() {
-        return value;
     }
-
-    public static Orientation of(String name) {
-        Orientation orientation = valueOf(name);
-    }*/
 
     Orientation left() {
         if (this == NORTH) {

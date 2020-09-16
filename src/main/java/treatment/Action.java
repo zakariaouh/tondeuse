@@ -1,16 +1,16 @@
 package treatment;
 
 public class Action {
-    private char action;
+    private char name;
     public static final char GAUCHE = 'G';
     private static final char DROITE = 'D';
 
-    public Action(char action) {
-        this.action = action;
+    public Action(char name) {
+        this.name = name;
     }
 
-    public char getAction() {
-        return action;
+    public char getName() {
+        return name;
     }
 
     public boolean isMovement() {
@@ -18,6 +18,6 @@ public class Action {
     }
 
     public boolean isOrientation() {
-        return GAUCHE == action || DROITE == action;
+        return GAUCHE == name || DROITE == name;
     }
 }

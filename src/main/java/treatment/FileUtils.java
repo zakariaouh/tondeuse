@@ -1,16 +1,17 @@
 package treatment;
 
-import treatment.MowerMonitor;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class FileUtils {
+    private FileUtils(){
+
+    }
     public static String loadTestFile() throws IOException {
 
-        Class clazz = MowerMonitor.class;
+        Class clazz = FileUtils.class;
         InputStream inputStream = clazz.getResourceAsStream("/data.txt");
         return readFromInputStream(inputStream);
 

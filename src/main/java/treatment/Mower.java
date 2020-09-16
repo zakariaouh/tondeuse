@@ -28,12 +28,11 @@ public class Mower {
         List<Action> actions = ActionFactory.create(task);
         actions.forEach(action -> {
             if (action.isOrientation()) {
-                changeOrientation(action.getAction());
+                changeOrientation(action.getName());
             }
-            if (action.isMovement()) {
-                if (isMoveForwardPossible()) {
-                    moveForward();
-                }
+            if (action.isMovement() && isMoveForwardPossible()) {
+                moveForward();
+
             }
         });
 

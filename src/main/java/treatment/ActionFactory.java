@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ActionFactory {
+    private ActionFactory(){
+
+    }
     public static List<Action> create(String tasks) {
         return tasks.chars()
                 .mapToObj(task -> new Action((char) task))
